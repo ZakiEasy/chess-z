@@ -19,7 +19,7 @@ Application web d'apprentissage des échecs pour enfants (pistes **explorer 7-10
 
 ## Avancement
 - [x] Session 1 : schéma Supabase (`supabase/schema.sql`), programme module 1-2 (`content/curriculum.json`), messages de résilience et badges (`content/resilience.json`), script de validation (`scripts/validate-content.mjs`, **à exécuter**)
-- [ ] Session 2 : squelette Vite + React, connexion Supabase, comptes parent, profils enfants
+- [x] Session 2 (code écrit, **non testé** : pas de réseau pour `npm install`) : squelette Vite + React, connexion Supabase, compte parent (email + mot de passe), profils enfants, écran d'accueil avec exercice du jour (aperçu)
 - [ ] Session 3 : échiquier + moteur d'exercices (mate_in_1, promote, quiz)
 - [ ] Session 4 : exercice du jour, séries, enregistrement des tentatives
 - [ ] Session 5 : XP, niveaux, badges, récompenses
