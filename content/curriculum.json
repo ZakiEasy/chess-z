@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "source": "J.R. Capablanca, Chess Fundamentals (1921, domaine public). Textes pédagogiques rédigés pour l'application ; positions et principes issus du livre.",
+  "tracks": {
+    "explorer": "7-10 ans : phrases courtes, ton encourageant, indices explicites",
+    "strategist": "10-14 ans : vocabulaire technique, principes du livre, indices plus discrets"
+  },
+  "exercise_types": {
+    "mate_in_1": "L'enfant doit jouer un coup qui donne échec et mat (tout mat est accepté).",
+    "promote": "L'enfant doit promouvoir le pion en Dame (champ 'promote_move').",
+    "quiz": "Question à choix, sans échiquier (champs 'choices' et 'answer')."
+  },
+  "modules": [
+    {
+      "id": "m1",
+      "order": 1,
+      "title": { "explorer": "Les mats éclair", "strategist": "Mats élémentaires" },
+      "book_ref": "Chap. I, §1-2",
+      "exercises": [
+        {
+          "id": "m1-e1",
+          "type": "mate_in_1",
+          "fen": "6k1/5ppp/8/8/8/8/8/R5K1 w - - 0 1",
+          "xp": 10,
+          "book_ref": "Chap. I, §1 (Ex. 1)",
+          "text": {
+            "explorer": {
+              "title": "Le roi coincé",
+              "goal": "Apprendre à faire mat quand le roi est enfermé derrière ses pions.",
+              "explanation": "Le roi noir est bloqué par ses propres pions : il n'a aucune case pour s'enfuir ! Ta tour peut aller tout en haut de l'échiquier pour l'attaquer.",
+              "hint": "Regarde la colonne a : ta tour peut monter jusqu'en haut.",
+              "success": "Échec et mat ! Le roi n'avait nulle part où aller. Bravo !",
+              "fail": "Presque ! Le roi peut encore s'échapper. Essaie un autre coup."
+            },
+            "strategist": {
+              "title": "Le mat du couloir",
+              "goal": "Reconnaître le mat sur la dernière rangée quand le roi est bloqué par ses propres pions.",
+              "explanation": "Les cases f7, g7 et h7 sont occupées par les pions noirs ; f8 et h8 sont contrôlées par la Tour dès qu'elle atteint la huitième rangée. Ce schéma revient très souvent en partie.",
+              "hint": "Cherche un coup de Tour qui donne échec sur la dernière rangée.",
+              "success": "Mat ! Pense à ce motif : un roi sans case de fuite est un roi vulnérable.",
+              "fail": "Ce coup ne mate pas. Compte les cases de fuite du roi noir."
+            }
+          }
+        },
+        {
+          "id": "m1-e2",
+          "type": "mate_in_1",
+          "fen": "7k/Q7/5K2/8/8/8/8/8 w - - 0 1",
+          "xp": 10,
+          "book_ref": "Chap. I, §1 (Ex. 4)",
+          "text": {
+            "explorer": {
+              "title": "La dame et son roi",
+              "goal": "Comprendre que ton roi peut protéger ta dame.",
+              "explanation": "Si ta dame va à côté du roi noir toute seule, il la mange ! Mais ton roi est là pour la protéger. Le roi noir ne peut pas prendre une pièce protégée.",
+              "hint": "Place ta dame à côté du roi noir, sur une case que ton roi protège.",
+              "success": "Mat ! Ta dame et ton roi forment une super équipe.",
+              "fail": "Oh là, le roi noir peut encore bouger ou prendre ta dame. Essaie encore !"
+            },
+            "strategist": {
+              "title": "Dame soutenue par le Roi",
+              "goal": "Appliquer le principe : le Roi doit coopérer avec les pièces pour mater.",
+              "explanation": "Une Dame au contact du roi adverse n'est efficace que si elle est protégée. Ici le Roi blanc couvre la case de mat.",
+              "hint": "Quelle case voisine du roi noir est protégée par ton Roi ?",
+              "success": "Mat. La coopération du Roi est un thème central des finales.",
+              "fail": "Ce coup laisse une défense au Noir. Vérifie qui protège ta Dame."
+            }
+          }
+        },
+        {
+          "id": "m1-e3",
+          "type": "mate_in_1",
+          "fen": "6k1/R7/8/8/8/8/8/1R2K3 w - - 0 1",
+          "xp": 15,
+          "book_ref": "Chap. I, §1 (remarque finale : deux Tours)",
+          "text": {
+            "explorer": {
+              "title": "L'escalier des deux tours",
+              "goal": "Faire mat avec deux tours qui travaillent ensemble.",
+              "explanation": "Une tour garde toute une rangée pour que le roi ne puisse pas y passer. L'autre tour donne l'échec tout en haut. À deux, elles forment un mur !",
+              "hint": "Ta tour de la colonne b peut monter tout en haut.",
+              "success": "Mat ! Deux tours bien placées, c'est imbattable.",
+              "fail": "Le roi a encore une case libre. Regarde ce que chaque tour surveille."
+            },
+            "strategist": {
+              "title": "Le mat des deux Tours",
+              "goal": "Voir que deux Tours suffisent à mater sans l'aide du Roi.",
+              "explanation": "La première Tour coupe la septième rangée, la seconde donne échec sur la huitième : le Roi est pris dans l'étau. Le livre note qu'il faut au moins deux Tours pour mater sans l'aide du Roi.",
+              "hint": "Une Tour coupe une rangée, l'autre donne échec : laquelle doit bouger ?",
+              "success": "Mat ! Technique à retenir : une Tour coupe, l'autre mate.",
+              "fail": "Ce coup ne mate pas. Quelle rangée reste libre pour le roi noir ?"
+            }
+          }
+        },
+        {
+          "id": "m1-e4",
+          "type": "promote",
+          "fen": "8/4P3/8/8/8/8/k7/4K3 w - - 0 1",
+          "promote_move": "e8=Q",
+          "xp": 10,
+          "book_ref": "Chap. I, §2",
+          "text": {
+            "explorer": {
+              "title": "Le pion magique",
+              "goal": "Savoir qu'un pion qui arrive au bout de l'échiquier se transforme.",
+              "explanation": "Ton petit pion a traversé tout l'échiquier ! S'il arrive sur la dernière rangée, il devient la pièce de ton choix. Le meilleur choix : la dame, la plus puissante.",
+              "hint": "Avance le pion d'une case, puis choisis la dame.",
+              "success": "Ton pion est devenu une dame ! Quelle belle aventure.",
+              "fail": "Avance le pion jusqu'à la dernière rangée et choisis la dame."
+            },
+            "strategist": {
+              "title": "La promotion du pion",
+              "goal": "Comprendre qu'un seul pion d'avance peut suffire à gagner.",
+              "explanation": "Le plus petit avantage matériel est un pion gagné, et il suffit souvent pour l'emporter. Promouvoir en Dame est presque toujours le meilleur choix.",
+              "hint": "Promeus le pion en Dame.",
+              "success": "Promotion réussie. Un pion passé est une arme redoutable.",
+              "fail": "Il faut promouvoir en Dame pour profiter pleinement de l'avantage."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "order": 2,
+      "title": { "explorer": "Qui est le plus fort ?", "strategist": "La valeur des pièces" },
+      "book_ref": "Chap. I, §5",
+      "exercises": [
+        {
+          "id": "m2-e1",
+          "type": "quiz",
+          "xp": 5,
+          "book_ref": "Chap. I, §5",
+          "choices": { "explorer": ["La tour", "Le fou"], "strategist": ["La Tour", "Le Fou"] },
+          "answer": 0,
+          "text": {
+            "explorer": {
+              "title": "Tour ou fou ?",
+              "question": "Quelle pièce vaut le plus : la tour ou le fou ?",
+              "goal": "Connaître la force relative des pièces pour bien choisir les échanges.",
+              "explanation": "La tour vaut environ 5 pions, le fou environ 3. Échanger un fou contre une tour, c'est perdre au change !",
+              "hint": "La tour contrôle des lignes entières, comme une grande règle.",
+              "success": "Exact ! La tour est plus forte.",
+              "fail": "Pas tout à fait : la tour vaut plus que le fou."
+            },
+            "strategist": {
+              "title": "Tour contre Fou",
+              "question": "Dans un échange, quelle pièce vaut le plus : la Tour ou le Fou ?",
+              "goal": "Évaluer correctement un échange de pièces.",
+              "explanation": "Valeurs usuelles : Pion 1, Cavalier et Fou 3, Tour 5, Dame 9. Le livre précise qu'il n'existe pas de table parfaite : le Fou et le Cavalier sont considérés de valeur égale en théorie, la paire de Fous étant presque toujours supérieure à une paire de Cavaliers.",
+              "hint": "Compare 5 et 3 : que gagne-t-on, que perd-on dans l'échange ?",
+              "success": "Correct. Gagner la « qualité » (Tour contre Fou ou Cavalier) est un vrai avantage.",
+              "fail": "Non : une Tour vaut environ 5, un Fou environ 3."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "todo_next_sessions": [
+    "m3 : mat Tour+Roi (escalier, opposition), Fous, Dame (Chap. I §1, ex. 1-4 en séquences jouées)",
+    "m4 : roi et pion contre roi, opposition (Chap. I §2, Chap. II)",
+    "m5 : développement et centre (Chap. I §3-4, Chap. VI)",
+    "m6 : parties commentées de Capablanca « trouve le meilleur coup » (2e partie)"
+  ]
+}
