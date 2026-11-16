@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "principles": [
+    "Perdre ne retire jamais d'XP.",
+    "Chaque partie jouée rapporte de l'XP, même perdue.",
+    "Après une défaite : poignée de main, émotion, leçon apprise, revanche optionnelle.",
+    "On félicite l'effort et le courage, pas seulement le résultat."
+  ],
+  "after_loss_flow": [
+    "handshake",
+    "mood",
+    "show_key_mistake",
+    "reflection",
+    "rematch_or_exercise"
+  ],
+  "messages": {
+    "explorer": {
+      "loss_intro": [
+        "Bien joué d'avoir terminé la partie ! Les champions perdent aussi, et c'est comme ça qu'ils grandissent.",
+        "Aïe, c'est dur de perdre. Respire. Tu viens d'apprendre quelque chose de nouveau !"
+      ],
+      "handshake": "Serre la main de ton adversaire : « Bien joué ! »",
+      "mood_question": "Comment tu te sens ?",
+      "reflection_question": "Qu'est-ce que tu as appris dans cette partie ?",
+      "reflection_choices": [
+        "J'ai oublié de protéger une pièce",
+        "Je suis allé trop vite",
+        "Mon adversaire a fait un super coup",
+        "Autre chose"
+      ],
+      "rematch": "On refait une partie ?"
+    },
+    "strategist": {
+      "loss_intro": [
+        "Une défaite analysée vaut mieux qu'une victoire oubliée.",
+        "Tous les grands joueurs ont perdu des centaines de parties. L'important est ce que tu en retires."
+      ],
+      "handshake": "Salue ton adversaire avant de passer à l'analyse.",
+      "mood_question": "Quel est ton état d'esprit après cette partie ?",
+      "reflection_question": "Quel est le moment décisif, et que ferais-tu autrement ?",
+      "reflection_choices": [
+        "J'ai laissé une pièce sans protection",
+        "J'ai négligé le développement ou le centre",
+        "J'ai raté une tactique de l'adversaire",
+        "Autre chose"
+      ],
+      "rematch": "Revanche, ou exercice ciblé sur ton erreur ?"
+    }
+  },
+  "badges": [
+    { "id": "first_exercise", "title": "Premier pas", "rule": "1er exercice réussi" },
+    { "id": "streak_3", "title": "Trois jours de suite", "rule": "série de 3 jours" },
+    { "id": "streak_7", "title": "Semaine de champion", "rule": "série de 7 jours" },
+    { "id": "good_loser", "title": "Bon perdant", "rule": "défaite terminée avec poignée de main et bilan rempli" },
+    { "id": "comeback", "title": "Revanche courageuse", "rule": "rejouer une partie juste après une défaite" },
+    { "id": "learner", "title": "J'apprends de mes erreurs", "rule": "3 bilans de défaite remplis" },
+    { "id": "no_hint", "title": "Cerveau en feu", "rule": "10 exercices réussis sans indice" }
+  ]
+}
