@@ -18,3 +18,13 @@ export const AVATARS = ['🐴', '🦉', '🐉', '🦁', '🦊', '🐼', '🚀', 
 export function nextExercise(successIds) {
   return exercises.find((e) => !successIds.has(e.id)) ?? null;
 }
+
+// XP gagnés : réduits de moitié si un indice a été utilisé
+export function xpFor(exercise, hintsUsed) {
+  return hintsUsed > 0 ? Math.ceil(exercise.xp / 2) : exercise.xp;
+}
+
+// 1 niveau tous les 50 XP
+export function levelFromXp(xp) {
+  return 1 + Math.floor(xp / 50);
+}
