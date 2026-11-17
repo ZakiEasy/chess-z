@@ -22,7 +22,7 @@ Application web d'apprentissage des échecs pour enfants (pistes **explorer 7-10
 - [x] Session 2 (code écrit, **non testé** : pas de réseau pour `npm install`) : squelette Vite + React, connexion Supabase, compte parent (email + mot de passe), profils enfants, écran d'accueil avec exercice du jour (aperçu)
 - [x] Session 3 (code écrit, **non testé**) : échiquier maison (toucher-déposer, coups légaux via chess.js), moteur d'exercices (mate_in_1, promote, quiz), indices, XP et niveau enregistrés. Correctif email : `emailRedirectTo`
 - [x] Session 4 (code écrit, **non testé**) : un nouvel exercice par jour, séries (streak, date locale), semaine en cours, historique « Mes progrès », entraînement libre (sans XP), type `move_piece`, module 0 (déplacements des pièces, 8 exercices) et 3 mats de plus (m1-e5 à e7). Contenu : 16 exercices
-- [ ] Session 5 : XP, niveaux, badges, récompenses
+- [x] Session 5 (code écrit, **non testé**) : correctif de l'échiquier qui se retournait (orientation fixée au départ), niveaux tous les 30 XP avec barre de progression, 10 badges actifs + 3 « bientôt » (parties), écran Collection (avatars et 5 thèmes d'échiquier débloqués par niveau), confettis. **Migration SQL requise** : `supabase/migrations/002_theme.sql`
 - [ ] Session 6 : parties contre le robot + flux après défaite
 - [ ] Session 7 : espace parent, finitions, déploiement Render
 - [ ] Session 8+ : nouveaux modules (mats en séquence, pion et opposition, développement, parties commentées)
@@ -30,4 +30,4 @@ Application web d'apprentissage des échecs pour enfants (pistes **explorer 7-10
 ## À fournir à la session 2
 - URL et clé `anon` du projet Supabase (jamais la clé `service_role`)
 - Dépôt GitHub relié à Render (ou ZIP du projet)
-STATE.md…]()
+TATE.md…]()
