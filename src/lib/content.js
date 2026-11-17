@@ -28,3 +28,9 @@ export function xpFor(exercise, hintsUsed) {
 export function levelFromXp(xp) {
   return 1 + Math.floor(xp / 50);
 }
+
+// Messages par défaut quand un exercice n'en fournit pas
+export const DEFAULT_TEXT = {
+  explorer: { success: 'Bravo, c\u2019est la bonne r\u00e9ponse !', fail: 'Pas tout \u00e0 fait\u2026 essaie encore !' },
+  strategist: { success: 'Correct !', fail: 'Ce n\u2019est pas le coup attendu. R\u00e9fl\u00e9chis au d\u00e9placement de la pi\u00e8ce.' },
+};
