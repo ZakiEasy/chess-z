@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "source": "J.R. Capablanca, Chess Fundamentals (1921, domaine public). Textes pédagogiques rédigés pour l'application ; positions et principes issus du livre.",
   "tracks": {
     "explorer": "7-10 ans : phrases courtes, ton encourageant, indices explicites",
@@ -8,13 +8,236 @@
   "exercise_types": {
     "mate_in_1": "L'enfant doit jouer un coup qui donne échec et mat (tout mat est accepté).",
     "promote": "L'enfant doit promouvoir le pion en Dame (champ 'promote_move').",
-    "quiz": "Question à choix, sans échiquier (champs 'choices' et 'answer')."
+    "quiz": "Question à choix, sans échiquier (champs 'choices' et 'answer').",
+    "move_piece": "L'enfant doit jouer la pièce 'piece' vers la case 'target' (apprentissage des déplacements)."
   },
   "modules": [
     {
+      "id": "m0",
+      "order": 0,
+      "title": {
+        "explorer": "Les pièces et leurs déplacements",
+        "strategist": "Les déplacements des pièces"
+      },
+      "book_ref": "Module de départ (le livre suppose ces règles connues)",
+      "exercises": [
+        {
+          "id": "m0-e1",
+          "type": "move_piece",
+          "fen": "4k3/8/8/8/8/8/8/4K1N1 w - - 0 1",
+          "piece": "n",
+          "target": "f3",
+          "xp": 5,
+          "book_ref": "Préliminaires (règles supposées connues par le livre)",
+          "text": {
+            "explorer": {
+              "title": "Le cavalier sauteur",
+              "goal": "Découvrir comment bouge le cavalier.",
+              "explanation": "Le cavalier se déplace en forme de L : deux cases tout droit, puis une case sur le côté. C’est la seule pièce qui peut sauter par-dessus les autres !",
+              "hint": "Depuis g1, monte de deux cases puis décale-toi d’une case vers la gauche.",
+              "task": "Amène le cavalier sur la case f3.",
+              "success": "Bravo, un joli saut en L !",
+              "fail": "Ce n’est pas la bonne case. Pense au L du cavalier."
+            },
+            "strategist": {
+              "title": "Le saut du Cavalier",
+              "goal": "Maîtriser le déplacement en L du Cavalier.",
+              "explanation": "Le Cavalier se déplace de deux cases dans une direction puis d’une case à angle droit, et peut franchir les autres pièces. Au centre, il contrôle jusqu’à huit cases.",
+              "hint": "Deux cases vers le haut, une vers la gauche.",
+              "task": "Amène le Cavalier en f3."
+            }
+          }
+        },
+        {
+          "id": "m0-e2",
+          "type": "move_piece",
+          "fen": "4k3/8/8/8/8/8/8/2B1K3 w - - 0 1",
+          "piece": "b",
+          "target": "h6",
+          "xp": 5,
+          "book_ref": "Préliminaires (règles supposées connues par le livre)",
+          "text": {
+            "explorer": {
+              "title": "Le fou en diagonale",
+              "goal": "Apprendre que le fou glisse en diagonale.",
+              "explanation": "Le fou glisse en diagonale, aussi loin que tu veux, tant que le chemin est libre. Il reste toujours sur des cases de la même couleur.",
+              "hint": "Pars de c1 et avance en diagonale vers le haut à droite.",
+              "task": "Envoie le fou jusqu’en h6, en un seul coup."
+            },
+            "strategist": {
+              "title": "La diagonale du Fou",
+              "goal": "Maîtriser le déplacement du Fou.",
+              "explanation": "Le Fou se déplace en diagonale sur autant de cases libres que souhaité, et reste toute la partie sur la même couleur de cases.",
+              "hint": "Suis la diagonale : d2, e3, f4, g5, h6.",
+              "task": "Amène le Fou en h6."
+            }
+          }
+        },
+        {
+          "id": "m0-e3",
+          "type": "move_piece",
+          "fen": "4k3/8/8/8/8/8/8/R3K3 w - - 0 1",
+          "piece": "r",
+          "target": "a7",
+          "xp": 5,
+          "book_ref": "Préliminaires (règles supposées connues par le livre)",
+          "text": {
+            "explorer": {
+              "title": "La tour tout droit",
+              "goal": "Apprendre que la tour avance en ligne droite.",
+              "explanation": "La tour avance en ligne droite : vers l’avant, l’arrière ou sur le côté, aussi loin que le chemin est libre.",
+              "hint": "Monte tout droit le long de la colonne a.",
+              "task": "Amène la tour sur la case a7."
+            },
+            "strategist": {
+              "title": "Colonnes et rangées",
+              "goal": "Maîtriser le déplacement de la Tour.",
+              "explanation": "La Tour se déplace sur les colonnes et les rangées, sans limite de distance tant que la voie est libre.",
+              "hint": "La Tour reste sur la colonne a.",
+              "task": "Amène la Tour en a7."
+            }
+          }
+        },
+        {
+          "id": "m0-e4",
+          "type": "move_piece",
+          "fen": "4k3/8/8/8/8/8/8/3QK3 w - - 0 1",
+          "piece": "q",
+          "target": "d5",
+          "xp": 5,
+          "book_ref": "Préliminaires (règles supposées connues par le livre)",
+          "text": {
+            "explorer": {
+              "title": "La dame, la plus puissante",
+              "goal": "Découvrir que la dame bouge comme une tour et un fou.",
+              "explanation": "La dame est la pièce la plus puissante : elle bouge comme une tour ET comme un fou !",
+              "hint": "Monte tout droit sur la colonne d.",
+              "task": "Amène la dame sur la case d5."
+            },
+            "strategist": {
+              "title": "La Dame",
+              "goal": "Retenir que la Dame combine Tour et Fou.",
+              "explanation": "La Dame combine les déplacements de la Tour et du Fou. C’est la pièce la plus puissante, d’une valeur voisine de 9 pions.",
+              "hint": "Un déplacement de Tour suffit ici.",
+              "task": "Amène la Dame en d5."
+            }
+          }
+        },
+        {
+          "id": "m0-e5",
+          "type": "move_piece",
+          "fen": "4k3/8/8/8/8/8/4P3/4K3 w - - 0 1",
+          "piece": "p",
+          "target": "e4",
+          "xp": 5,
+          "book_ref": "Préliminaires (règles supposées connues par le livre)",
+          "text": {
+            "explorer": {
+              "title": "Le pion et son double pas",
+              "goal": "Apprendre comment avance le pion.",
+              "explanation": "Le pion avance d’une case. Mais pour son tout premier coup, il a le droit d’avancer de deux cases !",
+              "hint": "Ton pion est encore sur sa case de départ.",
+              "task": "Avance le pion jusqu’en e4 en un seul coup."
+            },
+            "strategist": {
+              "title": "La marche du Pion",
+              "goal": "Connaître la marche du Pion.",
+              "explanation": "Le Pion avance d’une case, ou de deux depuis sa case de départ. Il ne recule jamais.",
+              "hint": "Le Pion est sur e2 : il peut faire un double pas.",
+              "task": "Avance le Pion en e4."
+            }
+          }
+        },
+        {
+          "id": "m0-e6",
+          "type": "move_piece",
+          "fen": "4k3/8/8/3p4/4P3/8/8/4K3 w - - 0 1",
+          "piece": "p",
+          "target": "d5",
+          "xp": 10,
+          "book_ref": "Préliminaires (règles supposées connues par le livre)",
+          "text": {
+            "explorer": {
+              "title": "Le pion mange en diagonale",
+              "goal": "Apprendre que le pion capture en diagonale.",
+              "explanation": "Le pion avance tout droit, mais il mange en diagonale ! Ton pion peut capturer une pièce placée en diagonale devant lui.",
+              "hint": "Ton pion en e4 regarde la case d5.",
+              "task": "Capture le pion noir avec ton pion."
+            },
+            "strategist": {
+              "title": "La prise du Pion",
+              "goal": "Distinguer la marche et la prise du Pion.",
+              "explanation": "Le Pion avance verticalement mais capture en diagonale, d’une case vers l’avant.",
+              "hint": "Capture en d5.",
+              "task": "Capture le pion noir."
+            }
+          }
+        },
+        {
+          "id": "m0-e7",
+          "type": "quiz",
+          "xp": 5,
+          "book_ref": "Préliminaires",
+          "choices": [
+            "Le cavalier",
+            "Le fou",
+            "La tour"
+          ],
+          "answer": 0,
+          "text": {
+            "explorer": {
+              "title": "Qui saute ?",
+              "goal": "Retenir la particularité du cavalier.",
+              "explanation": "Le cavalier est le seul à pouvoir sauter par-dessus les autres pièces, grâce à son déplacement en L.",
+              "hint": "Pense à la pièce qui a la forme d’une tête de cheval.",
+              "question": "Quelle pièce peut sauter par-dessus les autres ?"
+            },
+            "strategist": {
+              "title": "Le saut",
+              "goal": "Retenir la particularité du Cavalier.",
+              "explanation": "Le Cavalier est la seule pièce qui peut franchir les autres. Cela le rend précieux dans les positions fermées.",
+              "hint": "Une seule pièce ne suit pas de ligne droite ni de diagonale.",
+              "question": "Quelle pièce peut franchir les autres ?"
+            }
+          }
+        },
+        {
+          "id": "m0-e8",
+          "type": "quiz",
+          "xp": 5,
+          "book_ref": "Préliminaires",
+          "choices": [
+            "C’est échec et mat : la partie est terminée",
+            "On continue à jouer",
+            "Le roi est remplacé par une autre pièce"
+          ],
+          "answer": 0,
+          "text": {
+            "explorer": {
+              "title": "Le but du jeu",
+              "goal": "Comprendre ce qu’est un échec et mat.",
+              "explanation": "Quand le roi est attaqué et qu’il ne peut ni fuir, ni être protégé, c’est échec et mat : on ne capture jamais le roi, la partie s’arrête.",
+              "hint": "C’est le but de la partie !",
+              "question": "Que se passe-t-il quand le roi est attaqué et ne peut plus se sauver ?"
+            },
+            "strategist": {
+              "title": "Échec et mat",
+              "goal": "Définir l’échec et mat.",
+              "explanation": "L’échec et mat survient quand le roi est en échec sans pouvoir fuir, capturer l’attaquant ni s’abriter derrière une pièce. La partie est alors gagnée par l’attaquant.",
+              "hint": "Le roi n’est jamais capturé : la partie s’arrête avant.",
+              "question": "Que se passe-t-il quand le roi est en échec sans aucune parade ?"
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "m1",
       "order": 1,
-      "title": { "explorer": "Les mats éclair", "strategist": "Mats élémentaires" },
+      "title": {
+        "explorer": "Les mats éclair",
+        "strategist": "Mats élémentaires"
+      },
       "book_ref": "Chap. I, §1-2",
       "exercises": [
         {
@@ -117,13 +340,91 @@
               "fail": "Il faut promouvoir en Dame pour profiter pleinement de l'avantage."
             }
           }
+        },
+        {
+          "id": "m1-e5",
+          "type": "mate_in_1",
+          "fen": "7k/8/6K1/8/8/8/8/1Q6 w - - 0 1",
+          "xp": 10,
+          "book_ref": "Chap. I, §1",
+          "text": {
+            "explorer": {
+              "title": "Dame et roi dans le coin",
+              "goal": "Piéger le roi dans le coin avec la dame et ton roi.",
+              "explanation": "Ton roi garde deux cases pour toi, et ta dame attaque le roi noir sur la dernière rangée. Plus aucune case libre !",
+              "hint": "Ta dame peut aller tout en haut, sur la même colonne.",
+              "success": "Mat ! Le roi noir est piégé dans le coin.",
+              "fail": "Il reste une case au roi noir. Cherche un coup qui les couvre toutes."
+            },
+            "strategist": {
+              "title": "Mat dans le coin",
+              "goal": "Utiliser le Roi pour couper les cases de fuite.",
+              "explanation": "Le Roi blanc contrôle g7 et h7 ; la Dame donne échec sur la huitième rangée et contrôle g8. Aucune case de fuite.",
+              "hint": "Quelle colonne mène la Dame à la dernière rangée sans risque ?",
+              "success": "Mat. Roi et Dame coopèrent.",
+              "fail": "Ce coup laisse une case au Roi noir : lesquelles ton Roi contrôle-t-il ?"
+            }
+          }
+        },
+        {
+          "id": "m1-e6",
+          "type": "mate_in_1",
+          "fen": "4k3/8/4K3/8/8/8/8/R7 w - - 0 1",
+          "xp": 10,
+          "book_ref": "Chap. I, §1 (Ex. 1)",
+          "text": {
+            "explorer": {
+              "title": "La tour et son roi",
+              "goal": "Faire mat avec une tour aidée par ton roi.",
+              "explanation": "Ton roi bloque les cases juste devant le roi noir, et la tour donne échec sur la dernière rangée.",
+              "hint": "Ta tour peut aller tout en haut de la colonne a.",
+              "success": "Mat ! La tour et le roi, quelle équipe.",
+              "fail": "Le roi noir peut encore s’échapper. Réessaie !"
+            },
+            "strategist": {
+              "title": "Tour et Roi : le mat final",
+              "goal": "Reconnaître le mat final Tour + Roi.",
+              "explanation": "Les Rois sont en opposition : le Roi blanc couvre d7, e7 et f7, et la Tour donne échec sur la huitième rangée. C’est le schéma du mat de base avec Tour et Roi.",
+              "hint": "Joue la Tour sur la huitième rangée.",
+              "success": "Mat. Schéma essentiel à connaître.",
+              "fail": "Ce coup ne mate pas : quelles cases le Roi noir peut-il encore atteindre ?"
+            }
+          }
+        },
+        {
+          "id": "m1-e7",
+          "type": "mate_in_1",
+          "fen": "6k1/5ppp/8/8/8/8/8/3Q2K1 w - - 0 1",
+          "xp": 10,
+          "book_ref": "Chap. I, §1",
+          "text": {
+            "explorer": {
+              "title": "Le couloir, version dame",
+              "goal": "Retrouver le mat du couloir avec la dame.",
+              "explanation": "Comme avec la tour : les pions du roi noir le bloquent. Ta dame donne échec tout en haut et il ne peut pas se sauver.",
+              "hint": "La dame est sur la colonne d : monte tout en haut !",
+              "success": "Mat ! Le couloir est refermé.",
+              "fail": "Le roi noir a encore une sortie. Réessaie !"
+            },
+            "strategist": {
+              "title": "Le mat du couloir à la Dame",
+              "goal": "Appliquer le motif du couloir avec une autre pièce.",
+              "explanation": "Le motif est identique à celui de la Tour : les pions f7, g7 et h7 emprisonnent le roi. La Dame joue aussi bien ce rôle.",
+              "hint": "Quelle pièce atteint la huitième rangée par la colonne d ?",
+              "success": "Mat. Même motif, autre pièce.",
+              "fail": "Ce coup ne mate pas : revois les cases de fuite du roi noir."
+            }
+          }
         }
       ]
     },
     {
       "id": "m2",
       "order": 2,
-      "title": { "explorer": "Qui est le plus fort ?", "strategist": "La valeur des pièces" },
+      "title": {
+        "explorer": "Qui est le plus fort ?",
+        "strategist": "La valeur des pièces"
+      },
       "book_ref": "Chap. I, §5",
       "exercises": [
         {
@@ -131,7 +432,16 @@
           "type": "quiz",
           "xp": 5,
           "book_ref": "Chap. I, §5",
-          "choices": { "explorer": ["La tour", "Le fou"], "strategist": ["La Tour", "Le Fou"] },
+          "choices": {
+            "explorer": [
+              "La tour",
+              "Le fou"
+            ],
+            "strategist": [
+              "La Tour",
+              "Le Fou"
+            ]
+          },
           "answer": 0,
           "text": {
             "explorer": {
