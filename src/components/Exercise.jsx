@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Chess } from 'chess.js';
 import Board from './Board.jsx';
+import Confetti from './Confetti.jsx';
 import { xpFor, DEFAULT_TEXT } from '../lib/content.js';
 
-export default function Exercise({ exercise, track, review = false, onFinish, onExit }) {
+export default function Exercise({ exercise, track, review = false, theme, onFinish, onExit }) {
   const t = { ...DEFAULT_TEXT[track], ...exercise.text[track] };
   const isQuiz = exercise.type === 'quiz';
   const choices = Array.isArray(exercise.choices) ? exercise.choices : exercise.choices?.[track];
@@ -52,10 +53,12 @@ export default function Exercise({ exercise, track, review = false, onFinish, on
   }
 
   const earned = review ? 0 : xpFor(exercise, hints);
+  const orientation = exercise.fen ? exercise.fen.split(' ')[1] : 'w'; // fixé au départ
   const side = exercise.fen && exercise.fen.split(' ')[1] === 'b' ? 'les Noirs' : 'les Blancs';
 
   return (
     <section className="exercise">
+      {done && <Confetti />}
       {review && <p className="notice">Entraînement libre : pas d'XP, juste pour le plaisir ! 💪</p>}
       <p className="goal"><strong>🎯 Objectif :</strong> {t.goal}</p>
       <h3>{t.title}</h3>
@@ -75,7 +78,7 @@ export default function Exercise({ exercise, track, review = false, onFinish, on
         <>
           <p className="question">{t.task ?? `Tu joues ${side}. Trouve le bon coup !`}</p>
           <p className="muted">Touche une pièce, puis sa case d'arrivée.</p>
-          <Board fen={fen} disabled={done} onMove={tryMove} />
+          <Board fen={fen} orientation={orientation} theme={theme} disabled={done} onMove={tryMove} />
         </>
       )}
 
