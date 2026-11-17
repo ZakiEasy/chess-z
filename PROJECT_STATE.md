@@ -1,4 +1,3 @@
-[PROJECT_STATE.md](https://github.com/user-attachments/files/34957499/PROJECT_STATE.md)
 # Échecs pour enfants — état du projet
 
 > Colle ce fichier (et joins les fichiers utiles) au début de chaque nouvelle session.
@@ -22,7 +21,7 @@ Application web d'apprentissage des échecs pour enfants (pistes **explorer 7-10
 - [x] Session 1 : schéma Supabase (`supabase/schema.sql`), programme module 1-2 (`content/curriculum.json`), messages de résilience et badges (`content/resilience.json`), script de validation (`scripts/validate-content.mjs`, **à exécuter**)
 - [x] Session 2 (code écrit, **non testé** : pas de réseau pour `npm install`) : squelette Vite + React, connexion Supabase, compte parent (email + mot de passe), profils enfants, écran d'accueil avec exercice du jour (aperçu)
 - [x] Session 3 (code écrit, **non testé**) : échiquier maison (toucher-déposer, coups légaux via chess.js), moteur d'exercices (mate_in_1, promote, quiz), indices, XP et niveau enregistrés. Correctif email : `emailRedirectTo`
-- [ ] Session 4 : un exercice par jour, séries (streak), historique des tentatives, révision
+- [x] Session 4 (code écrit, **non testé**) : un nouvel exercice par jour, séries (streak, date locale), semaine en cours, historique « Mes progrès », entraînement libre (sans XP), type `move_piece`, module 0 (déplacements des pièces, 8 exercices) et 3 mats de plus (m1-e5 à e7). Contenu : 16 exercices
 - [ ] Session 5 : XP, niveaux, badges, récompenses
 - [ ] Session 6 : parties contre le robot + flux après défaite
 - [ ] Session 7 : espace parent, finitions, déploiement Render
@@ -31,3 +30,4 @@ Application web d'apprentissage des échecs pour enfants (pistes **explorer 7-10
 ## À fournir à la session 2
 - URL et clé `anon` du projet Supabase (jamais la clé `service_role`)
 - Dépôt GitHub relié à Render (ou ZIP du projet)
+STATE.md…]()
