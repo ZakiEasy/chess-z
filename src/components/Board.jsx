@@ -6,16 +6,16 @@ const GLYPH = { k: '♚\uFE0E', q: '♛\uFE0E', r: '♜\uFE0E', b: '♝\uFE0E', 
 const PROMO = [['q', 'Dame'], ['r', 'Tour'], ['b', 'Fou'], ['n', 'Cavalier']];
 const FILES = 'abcdefgh';
 
-export default function Board({ fen, disabled, onMove }) {
+export default function Board({ fen, orientation = 'w', theme, disabled, onMove }) {
   const game = useMemo(() => new Chess(fen), [fen]);
   const [selected, setSelected] = useState(null);
   const [pending, setPending] = useState(null);
 
-  const turn = game.turn();           // 'w' ou 'b' : on affiche du côté du joueur
+  const turn = game.turn();           // trait actuel (sélection des pièces)
   const rows = [0, 1, 2, 3, 4, 5, 6, 7];
   const cols = [0, 1, 2, 3, 4, 5, 6, 7];
-  const rr = turn === 'w' ? rows : [...rows].reverse();
-  const cc = turn === 'w' ? cols : [...cols].reverse();
+  const rr = orientation === 'w' ? rows : [...rows].reverse();   // orientation FIXE : ne change plus après un coup
+  const cc = orientation === 'w' ? cols : [...cols].reverse();
   const board = game.board();
 
   const targets = selected ? game.moves({ square: selected, verbose: true }) : [];
@@ -42,7 +42,8 @@ export default function Board({ fen, disabled, onMove }) {
 
   return (
     <div className="board-wrap">
-      <div className="board" role="grid" aria-label="Échiquier">
+      <div className="board" role="grid" aria-label="Échiquier"
+           style={theme ? { '--sq-light': theme.light, '--sq-dark': theme.dark } : undefined}>
         {rr.map((r, ri) =>
           cc.map((c, ci) => {
             const sq = FILES[c] + (8 - r);
