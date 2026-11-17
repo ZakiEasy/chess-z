@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Chess } from 'chess.js';
 import Board from './Board.jsx';
-import { xpFor } from '../lib/content.js';
+import { xpFor, DEFAULT_TEXT } from '../lib/content.js';
 
-export default function Exercise({ exercise, track, onFinish, onExit }) {
-  const t = exercise.text[track];
+export default function Exercise({ exercise, track, review = false, onFinish, onExit }) {
+  const t = { ...DEFAULT_TEXT[track], ...exercise.text[track] };
   const isQuiz = exercise.type === 'quiz';
+  const choices = Array.isArray(exercise.choices) ? exercise.choices : exercise.choices?.[track];
   const [fen, setFen] = useState(exercise.fen ?? null);
   const [tries, setTries] = useState(0);
   const [hints, setHints] = useState(0);
@@ -24,7 +25,7 @@ export default function Exercise({ exercise, track, onFinish, onExit }) {
     const n = tries + 1;
     setTries(n);
     setFeedback(t.fail);
-    if (n >= 3) revealHint();   // après 3 essais, on aide
+    if (n >= 3) revealHint(); // après 3 essais, on aide
   }
 
   function succeed(newFen) {
@@ -37,9 +38,10 @@ export default function Exercise({ exercise, track, onFinish, onExit }) {
     const g = new Chess(fen);
     let mv;
     try { mv = g.move(m); } catch { return; }
-    const ok = exercise.type === 'mate_in_1'
-      ? g.isCheckmate()
-      : mv.san.replace(/[+#]/g, '') === exercise.promote_move;
+    let ok;
+    if (exercise.type === 'mate_in_1') ok = g.isCheckmate();
+    else if (exercise.type === 'promote') ok = mv.san.replace(/[+#]/g, '') === exercise.promote_move;
+    else ok = mv.to === exercise.target && mv.piece === exercise.piece; // move_piece
     if (ok) succeed(g.fen()); else fail();
   }
 
@@ -49,11 +51,12 @@ export default function Exercise({ exercise, track, onFinish, onExit }) {
     else { setWrong([...wrong, i]); fail(); }
   }
 
-  const earned = xpFor(exercise, hints);
+  const earned = review ? 0 : xpFor(exercise, hints);
   const side = exercise.fen && exercise.fen.split(' ')[1] === 'b' ? 'les Noirs' : 'les Blancs';
 
   return (
     <section className="exercise">
+      {review && <p className="notice">Entraînement libre : pas d'XP, juste pour le plaisir ! 💪</p>}
       <p className="goal"><strong>🎯 Objectif :</strong> {t.goal}</p>
       <h3>{t.title}</h3>
 
@@ -61,7 +64,7 @@ export default function Exercise({ exercise, track, onFinish, onExit }) {
         <>
           <p className="question">{t.question}</p>
           <div className="choices">
-            {exercise.choices[track].map((c, i) => (
+            {choices.map((c, i) => (
               <button key={i} disabled={done || wrong.includes(i)}
                       className={done && i === exercise.answer ? 'good' : ''}
                       onClick={() => answer(i)}>{c}</button>
@@ -70,7 +73,8 @@ export default function Exercise({ exercise, track, onFinish, onExit }) {
         </>
       ) : (
         <>
-          <p className="muted">Tu joues {side}. Touche une pièce, puis sa case d'arrivée.</p>
+          <p className="question">{t.task ?? `Tu joues ${side}. Trouve le bon coup !`}</p>
+          <p className="muted">Touche une pièce, puis sa case d'arrivée.</p>
           <Board fen={fen} disabled={done} onMove={tryMove} />
         </>
       )}
@@ -79,7 +83,7 @@ export default function Exercise({ exercise, track, onFinish, onExit }) {
       {showHint && !done && <p className="notice hint">💡 {t.hint}</p>}
       {!done && (
         <button className="secondary" onClick={revealHint} disabled={showHint}>
-          💡 Indice (XP réduits de moitié)
+          💡 Indice{review ? '' : ' (XP réduits de moitié)'}
         </button>
       )}
 
@@ -89,8 +93,10 @@ export default function Exercise({ exercise, track, onFinish, onExit }) {
             <h4>Pourquoi ça marche ?</h4>
             <p>{t.explanation}</p>
           </div>
-          <p className="xp">+{earned} XP ⭐</p>
-          <button onClick={() => onFinish({ tries: tries + 1, hints, xp: earned })}>Continuer</button>
+          <p className="xp">{review ? 'Bien joué ! 💪' : `+${earned} XP ⭐`}</p>
+          <button onClick={() => onFinish({ tries: tries + 1, hints, xp: earned })}>
+            {review ? 'Terminer' : 'Continuer'}
+          </button>
         </>
       )}
       <button className="link" onClick={onExit}>Quitter l'exercice</button>
