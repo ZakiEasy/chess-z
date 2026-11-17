@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase, configured } from './lib/supabase.js';
+import { supabase, configured, initError } from './lib/supabase.js';
 import Auth from './components/Auth.jsx';
 import ChildPicker from './components/ChildPicker.jsx';
 import Home from './components/Home.jsx';
@@ -26,7 +26,8 @@ export default function App() {
     return (
       <main className="card">
         <h1>Configuration manquante</h1>
-        <p>Les variables <code>VITE_SUPABASE_URL</code> et <code>VITE_SUPABASE_ANON_KEY</code> ne sont pas définies.</p>
+        <p className="notice error">{initError}</p>
+        <p className="muted">Vérifie les variables d'environnement dans Render, puis relance un déploiement (elles sont lues au moment du build).</p>
       </main>
     );
   }
